@@ -60,7 +60,8 @@ Run Robot tests to verify API functionality
 robot --exitonfailure --critical critical tests/robot/api_tests.robot
 ```
 
-##TODO
+##Still to do:
 
-1. Add unit tests
-2. Add instructions on deploying to AWS
+* Add more unit tests
+* Add capability to test DynamoDB locally
+* Add instructions on deploying to AWS
