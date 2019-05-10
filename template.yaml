@@ -1,0 +1,122 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sam-app
+
+  Sample SAM Template
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  GetAllTasksFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: task/
+      Handler: get.handler
+      Runtime: python3.7
+      Events:
+        GetAllTasks:
+          Type: Api
+          Properties:
+            Path: /tasks
+            Method: get
+  CreateTaskFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: task/
+      Handler: post.handler
+      Runtime: python3.7
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        CreateTask:
+          Type: Api
+          Properties:
+            Path: /task
+            Method: post
+  DeleteTaskFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: task/
+      Handler: delete.handler
+      Runtime: python3.7
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+         DeleteTask:
+          Type: Api
+          Properties:
+            Path: /task/{id}
+            Method: delete
+  CreateTableFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: table/
+      Handler: post.handler
+      Runtime: python3.7
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        CreateTable:
+          Type: Api
+          Properties:
+            Path: /table
+            Method: post
+  DeleteTableFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: table/
+      Handler: delete.handler
+      Runtime: python3.7
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        DeleteTable:
+          Type: Api
+          Properties:
+            Path: /table
+            Method: delete
+
+Outputs:
+  GetAllTasksApi:
+    Description: "API Gateway endpoint URL for Prod stage for GetAllTasks function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/tasks"
+  GetAllTasksFunction:
+    Description: "Get All Tasks Lambda Function ARN"
+    Value: !GetAtt GetAllTasksFunction.Arn
+  GetAllTasksFunctionIamRole:
+    Description: "Implicit IAM Role created for GetAllTasks function"
+    Value: !GetAtt GetAllTasksFunctionRole.Arn
+  CreateTaskApi:
+    Description: "API Gateway endpoint URL for Prod stage for CreateTask function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/task"
+  CreateTaskFunction:
+    Description: "Create Task Lambda Function ARN"
+    Value: !GetAtt CreateTaskFunction.Arn
+  CreateTaskIamRole:
+    Description: "Implicit IAM Role created for Create Task function"
+    Value: !GetAtt CreateTaskFunctionRole.Arn
+  DeleteTaskApi:
+    Description: "API Gateway endpoint URL for Prod stage for DeleteTask function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/task"
+  DeleteTaskFunction:
+    Description: "Delete Task Lambda Function ARN"
+    Value: !GetAtt DeleteTaskFunction.Arn
+  DeleteTaskIamRole:
+    Description: "Implicit IAM Role created for Delete Task function"
+    Value: !GetAtt DeleteTaskFunctionRole.Arn
+  CreateTableApi:
+    Description: "API Gateway endpoint URL for Prod stage for CreateTable function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/table"
+  CreateTableFunction:
+    Description: "CreateTable Lambda Function ARN"
+    Value: !GetAtt CreateTableFunction.Arn
+  CreateTableIamRole:
+    Description: "Implicit IAM Role created for CreateTable function"
+    Value: !GetAtt CreateTableFunctionRole.Arn
+  DeleteTableApi:
+    Description: "API Gateway endpoint URL for Prod stage for DeleteTable function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/table"
+  DeleteTableFunction:
+    Description: "DeleteTable Lambda Function ARN"
+    Value: !GetAtt DeleteTableFunction.Arn
+  DeleteTableIamRole:
+    Description: "Implicit IAM Role created for DeleteTable function"
+    Value: !GetAtt DeleteTableFunctionRole.Arn
