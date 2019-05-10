@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8badab2_716da937",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-05-10T07:51:56Z",
+      "side": 1,
+      "message": "You\u0027ve added unit tests already, I see. So is this still a valid comment?",
+      "revId": "d386fb727e138f528b50d0c4dccc559bf2728b75",
+      "serverId": "e35316ed-3e7e-4b27-a5df-cb45bc988501",
+      "unresolved": true
+    }
+  ]
+}
