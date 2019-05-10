@@ -1,0 +1,8 @@
+*.html
+*.xml
+packaged.yaml
+venv/
+.idea/
+.pytest_cache/
+.pyc
+__pycache__
