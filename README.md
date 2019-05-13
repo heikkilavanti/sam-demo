@@ -62,5 +62,7 @@ robot --exitonfailure --critical critical tests/robot/api_tests.robot
 
 ##TODO
 
-1. Add unit tests
+1. Add more unit tests
 2. Add instructions on deploying to AWS
+3. Figure out best way to perform actual local testing,
+now works with DynamoDB in AWS.
