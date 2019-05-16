@@ -13,7 +13,7 @@ def handler(event, context):
     task_title = ast.literal_eval(event.get('body')).get('taskTitle')
     task_details = ast.literal_eval(event.get('body')).get('taskDetails')
     if task_title:
-        response = db.create_task(task_title,task_details)
+        response = db.create_task(task_title, task_details)
         if response:
             return {
                 "statusCode": 201,
@@ -21,19 +21,13 @@ def handler(event, context):
                     "taskId": response
                  })
             }
-        else:
-            return {
-                "statusCode": 500,
-                "message": "Error while saving to database"
-            }
+        return {
+            "statusCode": 500,
+            "message": "Error while saving to database"
+        }
     return {
         "statusCode": 400,
         "body": json.dumps({
             "error": "taskTitle and taskDetails must be given"
         })
     }
-
-
-
-
-

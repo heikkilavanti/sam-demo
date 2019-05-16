@@ -1,6 +1,6 @@
 # SAM Demo
 
-Small demo project to try and understand how a microservice API could potentially look like with AWS Labda and SAM.
+Small demo project to try and understand how a "microservice" API could potentially look like with AWS Lambda and SAM.
 
 Content:
 

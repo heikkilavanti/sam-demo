@@ -1,10 +1,7 @@
 import boto3
-import uuid
 
 
-
-class Db(object):
-
+class Db:
     table_name = "Tasks"
 
     def __init__(self):
@@ -40,10 +37,10 @@ class Db(object):
                 },
                 TableName=self.table_name,
             )
-        else:
-            return "OK"
+        return "OK"
 
     def delete_table(self):
         existing_tables = self.db_client.list_tables()['TableNames']
         if self.table_name in existing_tables:
             return self.db_client.delete_table(TableName=self.table_name)
+        return None

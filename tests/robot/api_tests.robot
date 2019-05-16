@@ -12,7 +12,7 @@ No tasks found before tests are run
 Create Task table
     [Tags]    critical
     ${response_code}    ${response_json}    Create Task table
-    Should Be Equal As Integers    204    ${response_code}
+    Should Be Equal As Integers    201    ${response_code}
 
 Create task
     [Tags]    critical

@@ -13,10 +13,8 @@ def handler(event, context):
     response = db.get_all_tasks()
     if response:
         return {
-            "statusCode": 200,
             "body": json.dumps(response),
         }
-    else:
-        return {
-            "statusCode": 404,
-        }
+    return {
+        "statusCode": 404,
+    }

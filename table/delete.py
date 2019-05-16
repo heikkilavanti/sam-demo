@@ -5,15 +5,10 @@ else:
 
 
 def handler(event, context):
-    print(event)
     database = Db()
     response = database.delete_table()
-    print(response)
     if response:
         return {
             "statusCode": 204,
         }
-    else:
-        return {
-            "statusCode": 403,
-        }
+    return {"statusCode": 403, }
