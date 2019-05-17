@@ -1,11 +1,16 @@
+import os
 import boto3
 
 
 class Db:
     table_name = "Tasks"
+    dynamo_db_url = os.environ.get("DYNAMO_DB_URL") \
+        if os.environ.get("DYNAMO_DB_URL") else "http://dynamodb:8080"
 
     def __init__(self):
-        self.db_client = boto3.client('dynamodb', region_name="eu-north-1")
+        self.db_client = boto3.client(
+            'dynamodb',
+            endpoint_url=self.dynamo_db_url)
 
     def create_table(self):
         existing_tables = self.db_client.list_tables()['TableNames']

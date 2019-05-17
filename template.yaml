@@ -8,6 +8,12 @@ Globals:
   Function:
     Timeout: 3
 
+Parameters:
+    DYNAMO_DB_URL:
+        Description: 'Dynamo DB URL'
+        Type: 'String'
+        Default: 'http://dynamodb.eu-north-1.amazonaws.com'
+
 Resources:
   GetAllTasksFunction:
     Type: AWS::Serverless::Function
@@ -21,6 +27,9 @@ Resources:
           Properties:
             Path: /tasks
             Method: get
+      Environment:
+        Variables:
+          DYNAMO_DB_URL: !Ref DYNAMO_DB_URL
   CreateTaskFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -34,6 +43,9 @@ Resources:
           Properties:
             Path: /task
             Method: post
+      Environment:
+        Variables:
+          DYNAMO_DB_URL: !Ref DYNAMO_DB_URL
   DeleteTaskFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -47,6 +59,9 @@ Resources:
           Properties:
             Path: /task/{id}
             Method: delete
+      Environment:
+        Variables:
+          DYNAMO_DB_URL: !Ref DYNAMO_DB_URL
   CreateTableFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -60,6 +75,9 @@ Resources:
           Properties:
             Path: /table
             Method: post
+      Environment:
+        Variables:
+          DYNAMO_DB_URL: !Ref DYNAMO_DB_URL
   DeleteTableFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -73,7 +91,9 @@ Resources:
           Properties:
             Path: /table
             Method: delete
-
+      Environment:
+        Variables:
+          DYNAMO_DB_URL: !Ref DYNAMO_DB_URL
 Outputs:
   GetAllTasksApi:
     Description: "API Gateway endpoint URL for Prod stage for GetAllTasks function"

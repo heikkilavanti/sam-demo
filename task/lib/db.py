@@ -1,11 +1,14 @@
 import uuid
+import os
 import boto3
 
 
 class Db:
+    table_name = "Tasks"
+    dynamo_db_url = os.environ.get("DYNAMO_DB_URL") \
+        if os.environ.get("DYNAMO_DB_URL") else "http://dynamodb:8080"
 
     def __init__(self):
-        self.table_name = "Tasks"
         self.db_resource = boto3.resource('dynamodb', region_name="eu-north-1")
         self.table = self.db_resource.Table(self.table_name)
 
