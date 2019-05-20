@@ -50,9 +50,14 @@ virtualenv venv
 pip install -r requirements.txt
 ```
 
-Start local Lambda and API GW via SAM CLI, attach to Docker network
+To test with remote DynamoDB, start local Lambda and API GW via SAM CLI, attach to Docker network
 ```bash
-sam local start-api --docker-network sam-demo
+sam local start-api
+```
+
+To test with local DynamoDB Lambda and API GW via SAM CLI, attach to Docker network
+```bash
+sam local start-api --docker-network sam-demo --
 ```
 
 Run Robot tests to verify API functionality
@@ -64,5 +69,3 @@ robot --exitonfailure --critical critical tests/robot/api_tests.robot
 
 1. Add more unit tests
 2. Add instructions on deploying to AWS
-3. Figure out best way to perform actual local testing,
-now works with DynamoDB in AWS.
