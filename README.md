@@ -15,7 +15,7 @@ Content:
 * [DockerHub account](https://hub.docker.com/)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html), for Mac use homebrew: ```brew install awscli```
 * [Python 3 installed](https://www.python.org/downloads/)
-* virtualenv installed: `python3 -m venv /path/to/new/virtual/environment`
+* virtualenv installed: (see below)
 * [Docker installed](https://www.docker.com/community-edition)
 
 ## Setup process
@@ -45,7 +45,7 @@ docker run -d -p 8000:8000 --network sam-demo --name dynamodb amazon/dynamodb-lo
 
 Navigate to `sam_demo` folder, activate virtualenv and install requirements
 ```bash
-virtualenv venv
+`python3 -m venv venv/`
 . venv/bin/activate
 pip install -r requirements.txt
 ```
