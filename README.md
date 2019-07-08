@@ -15,7 +15,7 @@ Content:
 * [DockerHub account](https://hub.docker.com/)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html), for Mac use homebrew: ```brew install awscli```
 * [Python 3 installed](https://www.python.org/downloads/)
-* virtualenv installed: `pip install virualenv`
+* virtualenv installed: `python3 -m venv /path/to/new/virtual/environment`
 * [Docker installed](https://www.docker.com/community-edition)
 
 ## Setup process
